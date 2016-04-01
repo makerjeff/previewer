@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<h1>Form</h1>
+
+<form id="myForm" action="/api/text" enctype="text/plain" method="post">
+    <!--name: this value needs to be the same as in multer().single(<name>);-->
+    <input id="username" type="text" name="user-field" placeholder="username"> <br>
+    <input id="password" type="text" name="pass-field" placeholder="password"> <br>
+    <input type="submit" value="sendText" name="submit">
+</form>
+
+<progress min="0" max="100" value="0">0% complete</progress>
+
+<button id="testButton">testButton</button>
+
+<script>
+    var form = document.getElementById('myForm');
+    var testButton = document.getElementById('testButton');
+
+    var loginInfo;
+
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+        console.log('form submit has been disabled.');
+    });
+
+    testButton.addEventListener('click', function(event){
+        console.log();
+
+
+        debugPostText();
+
+
+
+    });
+
+    //TODO continue here
+
+    function debugPostText() {
+
+        loginInfo = {
+            'username':document.getElementById('username').value,
+            'password':document.getElementById('password').value
+        };
+
+        var formData = new FormData();
+        formData.append('username', loginInfo.username);
+        formData.append('password', loginInfo.password);
+
+
+    }
+
+    //TODO function that handles XHR of text submission
+    function sendPostText(url, text) {
+        //create new FormData()
+
+
+
+        //create new XHR
+        //send formData via XHR
+
+    }
+
+</script>
+</body>
+</html>

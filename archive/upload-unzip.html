@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload unzip</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/lib/random_string_gen.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+
+    <h1>upload & unzip</h1>
+    <p>Uploading multiple files!</p> <br>
+
+    <form id="uploadForm" method="post" action="/api/unzip" enctype="multipart/form-data">
+        <input id="file-id" type="file" name="uploadFiles" multiple required>
+        <input id="submitButton" type="submit" name="submit" value="upload">
+    </form>
+
+    <progress id="progress" value="0" max="100"></progress> <br/>
+
+    <button id="testButton">test</button>
+</div>
+
+<!-- RESULTS HERE -->
+<div id="statusDiv"></div>
+
+<!-- BANNER HERE -->
+<div id="inject-here">
+    <!--<iframe class="iframer" src="./creative/1mDs78QbfW/myframe.html" width="305" height="255" sandbox="allow-same-origin allow-scripts allow-popups" ></iframe>-->
+</div>
+
+
+
+<script>
+    var statusDiv = document.getElementById('statusDiv');
+    var myForm = document.getElementById('uploadForm');
+    var testButton = document.getElementById('testButton');
+
+    var progressBar = document.getElementById('progress');
+
+    var file = document.getElementById('file-id');
+
+    //XHR version
+    myForm.addEventListener('submit', function(event){
+
+        //event.preventDefault();
+        console.log('Default prevented. Encoding type: ' + this.enctype);
+
+        uploadFiles('/api/multi', file.files[0]);   //for some reason, pointing to the first file works...
+
+    });
+
+    //myFiles.files returns 'FileList'
+    testButton.addEventListener('click', function(event){
+        console.log(file.files);
+    });
+
+
+    //TODO programatically inject iframe with defined route (socket? or XHR?)
+
+    //SCHEMA for DATAOBJECT
+    var dataObject = {
+        title: 'Test Banner!',
+        version: 'v001',
+        id: '1mDs78QbfW',
+        src: './creative/1mDs78QbfW/myframe.html',
+        widthVal: 300,
+        heightVal: 250 ,
+        sandbox: "allow-same-origin allow-scripts allow-popups",
+        framePadding: 5
+    };
+
+    injectAdBanner('inject-here', dataObject);
+
+    // ===== CUSTOM FUNCTIONS =====
+
+    /**
+     * Inject Banner into the div with the same ID.
+     * @param div Div to insert ad banner into.
+     * @param dataObject Data object to pass in. This object should be passed from the BACKEND as JSON.
+     */
+    function injectAdBanner(div, dataObject){
+
+        //after page has loaded....
+        window.addEventListener('load', function(event){
+
+            var injectDiv = document.getElementById(div);
+            var myFrame = document.createElement('iframe');
+
+            myFrame.setAttribute('id', dataObject.id);
+            myFrame.setAttribute('src', dataObject.src);
+            myFrame.setAttribute('width', dataObject.widthVal + dataObject.framePadding + 'px');
+            myFrame.setAttribute('height', dataObject.heightVal + dataObject.framePadding + 'px');
+            myFrame.setAttribute('sandbox', dataObject.sandbox);
+            myFrame.classList.add('iframer');
+
+            injectDiv.appendChild(myFrame);
+
+        });
+    }
+
+    /**
+     * Use this to upload single or multiple files to the node/express/multer backend.
+     * @param url Upload API endpoint.
+     * @param file File(s) object to upload.
+     */
+    function uploadFiles(url, file){
+        //var formData = new FormData();
+
+        //formData.append(file.name, file);
+
+        var xhr = new XMLHttpRequest();
+        //can xhr.open(<method>, <url>, async);
+        xhr.open('POST', url, true);
+
+        xhr.upload.addEventListener('load', function(event){
+            console.log('file transfer has started!');
+        });
+
+        xhr.upload.addEventListener('error', function(event){
+            console.log(Error('something horrible just happened!'));
+        });
+
+        xhr.upload.addEventListener('progress', function(event){
+            console.log('uploading... ' + event.loaded.toString() + '/' + event.total.toString() + ' - ' + (event.loaded/event.total*100).toFixed(2) + '%');
+            progressBar.value = (event.loaded/event.total*100);
+        });
+
+        xhr.send(file);
+    }
+
+    /**
+     * debug read database. hit node js backend
+     */
+    function readDatabase(){
+
+    }
+</script>
+</body>
+</html>

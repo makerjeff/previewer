@@ -1,0 +1,85 @@
+/* == style.css ==
+* For upload forms, specifically 'upload-unzip.html'
+*/
+
+* {
+    font-family: "Montserrat", sans-serif;
+
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2em;
+}
+p {
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.iframer {
+    box-sizing: border-box;
+    border: 0;
+    overflow: hidden;
+}
+
+.textField {
+    padding: 10px;
+    margin: 5px 0;
+
+    border-radius: 0;
+
+    border: 0;
+
+    border-bottom: 2px dashed rgba(100,100,100,0.5);
+
+    outline: 0;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#container {
+    margin: 20px;
+    min-width: 800px;
+}
+
+/*position banner here, inject*/
+#inject-here {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+}
+
+#pin-id {
+    margin-bottom: 10px;
+}
+
+#statusDiv {
+    margin: 20px;
+}
+
+.workingBlue {
+    color: rgb(9, 86, 255);
+}
+.black {
+    color: black;
+}
+
+progress {
+    position: relative;
+    background-color: #f3f3f3;
+    border: 1px dashed black;
+    height: 30px;
+    border-radius: 9px;
+}

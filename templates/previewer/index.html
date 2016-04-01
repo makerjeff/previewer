@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload unzip</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <script src="./lib/random_string_gen.js"></script>
+
+    <link type="text/css" href="./css/style.css">
+</head>
+<body>
+
+<!-- MAIN CONTENT HERE -->
+<div id="container"></div>
+
+<!-- RESULTS HERE -->
+<div id="statusDiv"></div>
+
+<!-- BANNER HERE -->
+<div id="inject-here"></div>
+
+
+<!-- SCRIPT -->
+<script>
+
+    //SCHEMA for DATAOBJECT
+    var dataObject = {
+        title: 'Test Banner!',
+        version: 'v001',
+        id: '1mDs78QbfW',
+        src: './creative/1mDs78QbfW/myframe.html',
+        widthVal: 300,
+        heightVal: 250 ,
+        sandbox: "allow-same-origin allow-scripts allow-popups",
+        framePadding: 5
+    };
+
+    injectAdBanner('inject-here', dataObject);
+
+    // ===== CUSTOM FUNCTIONS =====
+
+    /**
+     * Inject Banner into the div with the same ID.
+     * @param div Div to insert ad banner into.
+     * @param dataObject Data object to pass in. This object should be passed from the BACKEND as JSON.
+     */
+    function injectAdBanner(div, dataObject){
+
+        //after page has loaded....
+        window.addEventListener('load', function(event){
+
+            var injectDiv = document.getElementById(div);
+            var myFrame = document.createElement('iframe');
+
+            myFrame.setAttribute('id', dataObject.id);
+            myFrame.setAttribute('src', dataObject.src);
+            myFrame.setAttribute('width', dataObject.widthVal + dataObject.framePadding + 'px');
+            myFrame.setAttribute('height', dataObject.heightVal + dataObject.framePadding + 'px');
+            myFrame.setAttribute('sandbox', dataObject.sandbox);
+            myFrame.classList.add('iframer');
+
+            injectDiv.appendChild(myFrame);
+
+        });
+    }
+    
+</script>
+</body>
+</html>

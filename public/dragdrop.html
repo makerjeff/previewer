@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag drop</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="./css/style.css">
+    <script src="./lib/random_string_gen.js"></script>
+
+    <style>
+        #filedrag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 3px dashed black;
+            border-radius: 5px;
+
+            height: 200px;
+            width: 300px;
+
+            margin: 10px 0 10px 0;
+
+            background: rgba(0,255,255, 0.25);
+        }
+
+        filedrag .hover {
+            background: rgba(255,255,0, 0.25);
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="container">
+
+    <h1>drag drop</h1>
+    <p>drag & dr0p!</p> <br>
+
+    <form id="uploadForm" method="post" action="/api/unzip" enctype="multipart/form-data">
+        <input id="file-id" type="file" name="uploadFiles" multiple required>
+
+        <!--drag and drop here-->
+        <div id="filedrag"> Drop files here </div>
+
+        <input id="submitButton" type="submit" name="submit" value="upload">
+    </form>
+
+    <progress id="progress" value="0" max="100"></progress> <br/>
+    <button id="formDataButton">formData upload</button>
+    <button id="testButton">file input check</button>
+</div>
+
+<!-- RESULTS HERE -->
+<div id="statusDiv"></div>
+
+<!-- BANNER HERE -->
+<div id="inject-here">
+    <!--<iframe class="iframer" src="./creative/1mDs78QbfW/myframe.html" width="305" height="255" sandbox="allow-same-origin allow-scripts allow-popups" ></iframe>-->
+</div>
+
+
+
+<script src="./js/dragdrop-main.js"></script>
+</body>
+</html>
