@@ -1,0 +1,17 @@
+//
+   Created by jeffersonwu on 4/1/16.
+
+extends ../layout
+
+block content
+    h1=title
+    p Custom page with this title: #{title}
+
+block sidebar
+    h1=title
+    form(name='add-estimate', method='POST', action="http://www.wuyangclan.com/debug/")
+        div.input
+            span.label Title
+            input(type="text", name="title")
+        div.actions
+            input(type="submit", value="submit")

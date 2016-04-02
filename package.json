@@ -5,10 +5,12 @@
   "dependencies": {
     "colors": "latest",
     "express": "^4.13.3",
+    "jade":"latest",
     "multer": "^1.1.0",
     "serve-favicon": "latest",
     "file-type":"latest",
     "body-parser": "^1.14.2",
+    "cookie-parser": "latest",
     "mongoose":"latest",
     "bcrypt":"latest"
   }
