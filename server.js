@@ -27,6 +27,9 @@ var storage = multer.diskStorage({
     }
 });
 
+//2016 jade template
+var template = jade.compileFile(__dirname + '/views/helloworld.jade');
+
 //== Multer upload module ==
 var upload = multer({storage: storage}).single('uploadFile');
 var multi = multer({storage: storage}).array('uploadFiles');
@@ -74,7 +77,7 @@ app.get('/helloworld/:string', function(request,response){
     response.render('helloworld', {title: request.params.string});
 });
 
-app.get('/form/', function(request,response){
+app.get('/form', function(request,response){
     response.render('form', {title: 'upload'});
 });
 

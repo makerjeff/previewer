@@ -10,7 +10,11 @@ Helena's previewer
 
 ### Based on:
 - [Simple JADE/Express tutorial](http://www.clock.co.uk/blog/a-simple-website-in-nodejs-with-express-jade-and-stylus)
+- [Simple JADE/Express tutorial 2016 Edition](http://www.clock.co.uk/blog/a-simple-website-in-node-js-2016-edition)
 - [Node Express Mongo Jade](http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/)
+
+- [Node application best practices](https://www.terlici.com/2014/08/25/best-practices-express-structure.html)
+
 ### Notes/Major Discoveries
 
 
