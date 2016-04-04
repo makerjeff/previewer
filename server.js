@@ -10,11 +10,11 @@ var colors = require('colors');
 var fileType = require('file-type');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var bcrypt = require('bcrypt');
 
 // === custom modules ===
 var previewer = require('./previewer-module');
 /* ============ GLOBALS ============ */
-var done = false;
 
 /* ============ INSTANCES ============ */
 var app = express();
@@ -67,6 +67,10 @@ app.get('/', function(request, response){
     response.sendFile(__dirname + '/public/index.html');
 });
 
+/*----------------------- BCRYPT -----------------------*/
+
+
+/*----------------------- JADE -----------------------*/
 //JADE helloworld
 app.get('/helloworld', function(request, response){
     //(<string: name of jade file>, {<object: params>});
@@ -86,6 +90,7 @@ app.get('/index', function(request, response){
 });
 
 
+/*========================= UPLOADING =========================*/
 /* AJAX multiple file upload route */
 app.post('/api/multi', function(request, response){
 
