@@ -12,6 +12,7 @@
     "body-parser": "^1.14.2",
     "cookie-parser": "latest",
     "mongoose":"latest",
-    "bcrypt":"latest"
+    "bcrypt":"latest",
+    "jwt-simple":"latest"
   }
 }

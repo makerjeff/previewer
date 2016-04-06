@@ -40,7 +40,6 @@ app.set('view engine', 'jade');
 //server static files
 app.use(express.static(__dirname + "/public/"));
 
-
 //enable bodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -64,7 +63,7 @@ app.use(function(request, response, next){
 
 //default route
 app.get('/', function(request, response){
-    response.sendFile(__dirname + '/public/index.html');
+    response.render('index');
 });
 
 /*----------------------- BCRYPT -----------------------*/
@@ -76,9 +75,20 @@ app.get('/helloworld', function(request, response){
     //(<string: name of jade file>, {<object: params>});
     response.render('helloworld', {title: 'Hello, World!'});
 });
-
 app.get('/helloworld/:string', function(request,response){
     response.render('helloworld', {title: request.params.string});
+});
+
+app.get('/helloworld2', function(req, res){
+    res.render('helloworld', {
+        title: 'Helloworld2',
+        token: 'ajkweafjda',
+        myObject: {
+            name:'jeff',
+            job: 'creative tech',
+            department: 'creative'
+        }
+    });
 });
 
 app.get('/form', function(request,response){

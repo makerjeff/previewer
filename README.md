@@ -6,6 +6,7 @@ Helena's previewer
 - [adm-zip: backend zip file handling](https://github.com/cthackers/adm-zip)
 - [Multer: File upload](https://www.npmjs.com/package/multer)
 - [bcrypt](https://www.npmjs.com/package/bcryptjs)
+- [JSON Web Token](https://www.npmjs.com/package/jwt-simple)
 
 
 ### Based on:
