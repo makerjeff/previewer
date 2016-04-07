@@ -13,7 +13,7 @@ var fs = require('fs');
 var bcrypt = require('bcrypt');
 
 // === custom modules ===
-var previewer = require('./previewer-module');
+var previewer = require('./previewer-helpers');
 /* ============ GLOBALS ============ */
 
 /* ============ INSTANCES ============ */
@@ -70,24 +70,24 @@ app.get('/', function(request, response){
 
 
 /*----------------------- JADE -----------------------*/
+
+var globalObject = {
+    name:'jeff',
+    job: 'creative tech',
+    department: 'creative'
+};
+
 //JADE helloworld
 app.get('/helloworld', function(request, response){
     //(<string: name of jade file>, {<object: params>});
-    response.render('helloworld', {title: 'Hello, World!'});
-});
-app.get('/helloworld/:string', function(request,response){
-    response.render('helloworld', {title: request.params.string});
+    response.render('helloworld', {title: 'Hello, World!', myObject: globalObject});
 });
 
-app.get('/helloworld2', function(req, res){
+app.get('/object', function(req, res){
     res.render('helloworld', {
-        title: 'Helloworld2',
+        title: 'object',
         token: 'ajkweafjda',
-        myObject: {
-            name:'jeff',
-            job: 'creative tech',
-            department: 'creative'
-        }
+        myObject: globalObject
     });
 });
 

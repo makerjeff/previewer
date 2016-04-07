@@ -3,7 +3,7 @@
  * Created by jefferson.wu on 3/23/16.
  */
 
-//previewer-module.js
+//helpers-helpers.js
 
 var fs = require('fs');
 

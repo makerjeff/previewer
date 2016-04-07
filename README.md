@@ -16,6 +16,8 @@ Helena's previewer
 - [Using BCrypt module to hash and safely store passwords](http://codetheory.in/using-the-node-js-bcrypt-module-to-hash-and-safely-store-passwords/)
 
 - [Node application best practices](https://www.terlici.com/2014/08/25/best-practices-express-structure.html)
+- [Package.JSON](http://browsenpm.org/package.json)
+- [Node External Routes and Middleware](http://stackoverflow.com/questions/14958296/how-to-put-middleware-in-its-own-file-in-node-js-express-js)
 
 ### Notes/Major Discoveries
 
