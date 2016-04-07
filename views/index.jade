@@ -1,7 +1,16 @@
 //
    Created by jeffersonwu on 4/1/16.
 
-extends ../layout
+extends layout
 block content
+    h1 choose a zip file
+    form(id='uploadForm', method='post', action='/upload', enctype='multipart/form-data')
+        input(id='file-id', type='file', name='uploadFiles', accept='application/zip' required)
+        input(id='submitButton', type='submit', value='upload')
 
-block sidebar
+    //div#version-info #{app} #{version} created by #{author.name}
+
+    div.progressBar
+        div.progressValue
+
+    script(src='./js/previewer-main.js')
