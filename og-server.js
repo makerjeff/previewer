@@ -10,11 +10,11 @@ var colors = require('colors');
 var fileType = require('file-type');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var bcrypt = require('bcrypt');
 
 // === custom modules ===
-var previewer = require('./previewer-module');
+var previewer = require('./previewer-helpers');
 /* ============ GLOBALS ============ */
-var done = false;
 
 /* ============ INSTANCES ============ */
 var app = express();
@@ -40,7 +40,6 @@ app.set('view engine', 'jade');
 //server static files
 app.use(express.static(__dirname + "/public/"));
 
-
 //enable bodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -64,17 +63,32 @@ app.use(function(request, response, next){
 
 //default route
 app.get('/', function(request, response){
-    response.sendFile(__dirname + '/public/index.html');
+    response.render('index');
 });
+
+/*----------------------- BCRYPT -----------------------*/
+
+
+/*----------------------- JADE -----------------------*/
+
+var globalObject = {
+    name:'jeff',
+    job: 'creative tech',
+    department: 'creative'
+};
 
 //JADE helloworld
 app.get('/helloworld', function(request, response){
     //(<string: name of jade file>, {<object: params>});
-    response.render('helloworld', {title: 'Hello, World!'});
+    response.render('helloworld', {title: 'Hello, World!', myObject: globalObject});
 });
 
-app.get('/helloworld/:string', function(request,response){
-    response.render('helloworld', {title: request.params.string});
+app.get('/object', function(req, res){
+    res.render('helloworld', {
+        title: 'object',
+        token: 'ajkweafjda',
+        myObject: globalObject
+    });
 });
 
 app.get('/form', function(request,response){
@@ -86,6 +100,7 @@ app.get('/index', function(request, response){
 });
 
 
+/*========================= UPLOADING =========================*/
 /* AJAX multiple file upload route */
 app.post('/api/multi', function(request, response){
 
