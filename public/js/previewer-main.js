@@ -6,10 +6,10 @@
 var uploadForm = $id('uploadForm');
 var fileInput = $id('file-id');
 var submitButton = $id('submitButton');
-var progressBar = $id('progressBar');
 
 /*------------------- defaults -------------------*/
-submitButton.hidden = true;
+submitButton.style.visibility = 'hidden';
+
 
 
 /*------------------- events listeners -------------------*/
@@ -26,13 +26,17 @@ fileInput.addEventListener('change', function(event){
     console.log(fileInput.files);
 
     //show upload button
-    submitButton.hidden = false;
+    submitButton.style.visibility = 'visible';
 });
 
 //submit file
 uploadForm.addEventListener('submit', function(event){
     console.log('Encoding type: ' + this.enctype);
 
+    drawProgress();
+
+    //hide upload button
+    submitButton.style.visibility = 'hidden';
     uploadFiles('/upload', fileInput.files[0]);
 });
 
@@ -57,8 +61,33 @@ function uploadFiles(url, file){
     // progress handler
     xhr.upload.addEventListener('progress', function(event){
         console.log('uploading... ' + event.loaded.toString() + '/' + event.total.toString() + ' - ' + (event.loaded/event.total*100).toFixed(2) + '%');
-        //progressBar.value = (event.loaded/event.total*100);
+
+        //TODO: this is horribly inefficient as it destroys and redraws every call.  FIx this.
+        drawProgress().val.style.width = (event.loaded / event.total * 100) + '%';
+
+        //progressValue.style.width = (event.loaded/event.total*100) + '%';
     });
 
     xhr.send(file);
+}
+
+function drawProgress(){
+    var output = {};
+    var oldDiv = document.getElementsByClassName('container')[0];
+    oldDiv.innerHTML = '';
+    
+    var progressBar = document.createElement('div');
+    var progressValue = document.createElement('div');
+
+    progressBar.appendChild(progressValue);
+
+    progressBar.classList.add('progressBar');
+    progressValue.classList.add('progressValue');
+
+    oldDiv.appendChild(progressBar);
+
+    output.bar = progressBar;
+    output.val = progressValue;
+
+    return output;
 }

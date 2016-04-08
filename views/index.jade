@@ -6,11 +6,13 @@ block content
     h1 choose a zip file
     form(id='uploadForm', method='post', action='/upload', enctype='multipart/form-data')
         input(id='file-id', type='file', name='uploadFiles', accept='application/zip' required)
+        br
         input(id='submitButton', type='submit', value='upload')
 
     //div#version-info #{app} #{version} created by #{author.name}
 
-    div.progressBar
-        div.progressValue
+    //MOVING THIS TO JS
+    //div.progressBar
+    //    div.progressValue
 
     script(src='./js/previewer-main.js')
