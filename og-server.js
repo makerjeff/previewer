@@ -13,7 +13,7 @@ var fs = require('fs');
 var bcrypt = require('bcrypt');
 
 // === custom modules ===
-var previewer = require('./previewer-helpers');
+var previewer = require('./helpers/previewer-helpers');
 /* ============ GLOBALS ============ */
 
 /* ============ INSTANCES ============ */

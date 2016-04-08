@@ -3,7 +3,12 @@
 
 extends layout
 block content
-    p #{name} successfully uploaded to #{path}.
+    p
+    b #{name} &nbsp;
+    | successfully uploaded to &nbsp;
+    b #{path}.
 
-    a(href='/') Upload again
-
+    br
+    br
+    div.uploadAgain
+        a(href='/') Upload another?

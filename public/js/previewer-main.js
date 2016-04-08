@@ -75,8 +75,7 @@ function drawProgress(){
     var output = {};
     var oldDiv = document.getElementsByClassName('container')[0];
     oldDiv.innerHTML = '';
-
-
+    
     var progressBar = document.createElement('div');
     var progressValue = document.createElement('div');
 
@@ -91,5 +90,4 @@ function drawProgress(){
     output.val = progressValue;
 
     return output;
-
 }
