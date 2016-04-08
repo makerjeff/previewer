@@ -18,7 +18,7 @@ var helpers = require('./helpers/previewer-helpers');
 
 var dataHolder = {
     app: 'Previewer',
-    version: '0.0.2',
+    version: '0.0.3',
     author: {
         name: 'Jefferson Wu',
         email: 'jefferson.wu@180la.com'
@@ -80,30 +80,23 @@ app.get('/', function(request, response){
 // upload route
 app.post('/upload', function(request, response){
     multi(request, response, function(error){
-<<<<<<< Updated upstream
+
         var fileInfo = {
             name: request.files[0].filename,
             path: request.files[0].path
         };
-=======
-
-        // var fileInfo = {
-        //     name: request.files[0].filename,
-        //     path: request.files[0].path
-        // };
->>>>>>> Stashed changes
 
         if(error){
             return response.end('Rut Roh! File failed on upload!');
         } else {
-            // dataHolder.name = fileInfo.name;
-            // dataHolder.path = fileInfo.path;
-
-            dataHolder.name = 'random file name';
-            dataHolder.path = 'dummy file path';
+            dataHolder.name = fileInfo.name;
+            dataHolder.path = fileInfo.path;
 
             response.render('upload', dataHolder);
-            // console.log(request.files[0].filename + ' uploaded to: ' + request.files[0].path);
+            console.log(request.files[0].filename + ' uploaded to: ' + request.files[0].path);
+
+            //TODO need to check MD5 hash to verify completion of file.  No error checking yet.
+            //TODO MD5 hash check on frontend + backend
         }
     });
 });
@@ -115,5 +108,5 @@ app.get('*', function(request, response){
 
 /* ===== START SERVER ===== */
 app.listen(3000, function(){
-    console.log('Working on Port 3000'.blue);
+    console.log(dataHolder.app + ' version ' + dataHolder.version + ' running on port ' + process.argv[2] + '.' );
 });
