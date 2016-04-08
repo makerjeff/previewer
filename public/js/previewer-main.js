@@ -6,10 +6,10 @@
 var uploadForm = $id('uploadForm');
 var fileInput = $id('file-id');
 var submitButton = $id('submitButton');
-var progressBar = $id('progressBar');
 
 /*------------------- defaults -------------------*/
-submitButton.hidden = true;
+submitButton.style.visibility = 'hidden';
+
 
 
 /*------------------- events listeners -------------------*/
@@ -26,13 +26,17 @@ fileInput.addEventListener('change', function(event){
     console.log(fileInput.files);
 
     //show upload button
-    submitButton.hidden = false;
+    submitButton.style.visibility = 'visible';
 });
 
 //submit file
 uploadForm.addEventListener('submit', function(event){
     console.log('Encoding type: ' + this.enctype);
 
+    drawProgress();
+
+    //hide upload button
+    submitButton.style.visibility = 'hidden';
     uploadFiles('/upload', fileInput.files[0]);
 });
 
@@ -61,4 +65,18 @@ function uploadFiles(url, file){
     });
 
     xhr.send(file);
+}
+
+function drawProgress(){
+    var oldDiv = document.getElementsByClassName('container')[0];
+    oldDiv.innerHTML = '';
+
+
+    var progressBar = document.createElement('div');
+    var progressValue = document.createElement('div');
+
+    progressBar.appendChild(progressValue);
+
+    progressBar.classList.add('progressBar');
+    progressValue.classList.add('progressValue');
 }

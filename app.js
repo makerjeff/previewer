@@ -88,8 +88,7 @@ app.post('/upload', function(request, response){
 
         var fileInfo = {
             name: request.files[0].filename,
-            path: request.files[0].path,
-            size: request.files[0].size
+            path: request.files[0].path
         };
 
         if(error){
@@ -97,7 +96,6 @@ app.post('/upload', function(request, response){
         } else {
             dataHolder.name = fileInfo.name;
             dataHolder.path = fileInfo.path;
-            dataHolder.size = fileInfo.size;
 
             response.render('upload', dataHolder);
             console.log(request.files[0].filename + ' uploaded to: ' + request.files[0].path);
