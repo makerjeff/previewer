@@ -80,19 +80,30 @@ app.get('/', function(request, response){
 // upload route
 app.post('/upload', function(request, response){
     multi(request, response, function(error){
+<<<<<<< Updated upstream
         var fileInfo = {
             name: request.files[0].filename,
             path: request.files[0].path
         };
+=======
+
+        // var fileInfo = {
+        //     name: request.files[0].filename,
+        //     path: request.files[0].path
+        // };
+>>>>>>> Stashed changes
 
         if(error){
             return response.end('Rut Roh! File failed on upload!');
         } else {
-            dataHolder.name = fileInfo.name;
-            dataHolder.path = fileInfo.path;
+            // dataHolder.name = fileInfo.name;
+            // dataHolder.path = fileInfo.path;
+
+            dataHolder.name = 'random file name';
+            dataHolder.path = 'dummy file path';
 
             response.render('upload', dataHolder);
-            console.log(request.files[0].filename + ' uploaded to: ' + request.files[0].path);
+            // console.log(request.files[0].filename + ' uploaded to: ' + request.files[0].path);
         }
     });
 });
