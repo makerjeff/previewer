@@ -77,12 +77,6 @@ var dataHolder = {
 
 app.post('/upload', function(request, response){
 
-    var fileInfoOuter = {
-        name: 'some name',
-        path: 'some path',
-        size: 'some size'
-    };
-
 
     multi(request, response, function(error){
 

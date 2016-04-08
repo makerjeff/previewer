@@ -61,13 +61,18 @@ function uploadFiles(url, file){
     // progress handler
     xhr.upload.addEventListener('progress', function(event){
         console.log('uploading... ' + event.loaded.toString() + '/' + event.total.toString() + ' - ' + (event.loaded/event.total*100).toFixed(2) + '%');
-        //progressBar.value = (event.loaded/event.total*100);
+
+        //TODO: this is horribly inefficient as it destroys and redraws every call.  FIx this.
+        drawProgress().val.style.width = (event.loaded / event.total * 100) + '%';
+
+        //progressValue.style.width = (event.loaded/event.total*100) + '%';
     });
 
     xhr.send(file);
 }
 
 function drawProgress(){
+    var output = {};
     var oldDiv = document.getElementsByClassName('container')[0];
     oldDiv.innerHTML = '';
 
@@ -79,4 +84,12 @@ function drawProgress(){
 
     progressBar.classList.add('progressBar');
     progressValue.classList.add('progressValue');
+
+    oldDiv.appendChild(progressBar);
+
+    output.bar = progressBar;
+    output.val = progressValue;
+
+    return output;
+
 }
