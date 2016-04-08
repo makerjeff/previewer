@@ -1,0 +1,14 @@
+//
+   Created by jeffersonwu on 4/1/16.
+
+extends layout
+block content
+    p
+    b #{name} &nbsp;
+    | successfully uploaded to &nbsp;
+    b #{path}.
+
+    br
+    br
+    div.uploadAgain
+        a(href='/') Upload another?

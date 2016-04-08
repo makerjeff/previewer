@@ -1,0 +1,22 @@
+//
+   Created by jeffersonwu on 4/1/16.
+
+
+doctype html
+html
+    head
+        title Previewer #{version}
+        link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Montserrat:400,700')
+        link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900')
+        link(rel='stylesheet', href='/css/style.css')
+        //script(src='lib/dom_helpers.js');
+        script(src='./lib/dom_helpers.js')
+    body
+        div#title
+            h1 #{app}
+
+        .container
+            .content
+                block content
+
+        div#footer Version #{version} created by #{author.name}

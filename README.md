@@ -1,5 +1,5 @@
-#Previewer 0.0.1
-Helena's previewer
+#Previewer 0.0.2
+Updating this text to see if the Develop branch grabs it.
 
 ### Technologies
 - [Jade Template Engine](http://jade-lang.com/tutorial/)
@@ -18,6 +18,7 @@ Helena's previewer
 - [Node application best practices](https://www.terlici.com/2014/08/25/best-practices-express-structure.html)
 - [Package.JSON](http://browsenpm.org/package.json)
 - [Node External Routes and Middleware](http://stackoverflow.com/questions/14958296/how-to-put-middleware-in-its-own-file-in-node-js-express-js)
+- [Renaming and moving files in Node](https://nodejs.org/docs/latest/api/fs.html#fs_fs_rename_oldpath_newpath_callback) **(NEW)**
 
 ### Notes/Major Discoveries
 

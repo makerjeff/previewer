@@ -13,8 +13,17 @@ var fs = require('fs');
 var bcrypt = require('bcrypt');
 
 // === custom modules ===
-var helpers = require('./previewer-helpers');
+var helpers = require('./helpers/previewer-helpers');
 /* ============ GLOBALS ============ */
+
+var dataHolder = {
+    app: 'Previewer',
+    version: '0.0.2',
+    author: {
+        name: 'Jefferson Wu',
+        email: 'jefferson.wu@180la.com'
+    }
+};
 
 /* ============ INSTANCES ============ */
 var app = express();
@@ -26,9 +35,6 @@ var storage = multer.diskStorage({
         callback(null, file.originalname);
     }
 });
-
-//2016 jade template
-var template = jade.compileFile(__dirname + '/views/helloworld.jade');
 
 //== Multer upload module ==
 var upload = multer({storage: storage}).single('uploadFile');
@@ -63,71 +69,35 @@ app.use(function(request, response, next){
 
 //default route
 app.get('/', function(request, response){
-    response.render('index');
+    response.render('index', dataHolder);
 });
 
 /*----------------------- BCRYPT -----------------------*/
 /*----------------------- JADE -----------------------*/
 
-var globalObject = {
-    name:'jeff',
-    job: 'creative tech',
-    department: 'creative'
-};
-
-//JADE helloworld
-app.get('/helloworld', function(request, response){
-    //(<string: name of jade file>, {<object: params>});
-    response.render('helloworld', {title: 'Hello, World!', myObject: globalObject});
-});
-
-app.get('/object', function(req, res){
-    res.render('helloworld', {
-        title: 'object',
-        token: 'ajkweafjda',
-        myObject: globalObject
-    });
-});
-
-app.get('/form', function(request,response){
-    response.render('form', {title: 'upload'});
-});
-
-app.get('/index', function(request, response){
-    response.render('index', {title: 'Index page!'});
-});
-
-
 /*========================= UPLOADING =========================*/
-/* AJAX multiple file upload route */
-app.post('/api/multi', function(request, response){
 
+// upload route
+app.post('/upload', function(request, response){
     multi(request, response, function(error){
+        var fileInfo = {
+            name: request.files[0].filename,
+            path: request.files[0].path
+        };
+
         if(error){
-            return response.end('error uploading files!');
+            return response.end('Rut Roh! File failed on upload!');
         } else {
-            response.type('text/html');
-            response.end('Files have been uploaded. ' + '<a href="/multi-upload.html">Upload again! </a>');
-            console.log(request.files);
+            dataHolder.name = fileInfo.name;
+            dataHolder.path = fileInfo.path;
+
+            response.render('upload', dataHolder);
+            console.log(request.files[0].filename + ' uploaded to: ' + request.files[0].path);
         }
     });
 });
 
-
-/* AJAX multi-file upload with auto unzip and folder creation */
-// TODO dev
-app.post('/api/unzip', function(request, response){
-    multi(request, response, function(error){
-        if(error){
-            return response.end('error uploading files!');
-        }
-        response.type('text/html');
-        response.end('Files have been uploaded and unzipped to root/public/unzipped');
-    });
-});
-
-
-// basic 404 catch-all middleware
+// basic 404 catch-all route
 app.get('*', function(request, response){
     response.sendFile(__dirname + '/public/404.html');
 });
@@ -136,5 +106,3 @@ app.get('*', function(request, response){
 app.listen(3000, function(){
     console.log('Working on Port 3000'.blue);
 });
-
-/* ============ HELPER FUNCTIONS ============ */
