@@ -68,7 +68,7 @@ app.get('/', function(request, response){
 
 var dataHolder = {
     app: 'Previewer',
-    version: '0.0.1',
+    version: '0.0.2',
     author: {
         name: 'Jefferson Wu',
         title: 'Creative Technologist'

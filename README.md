@@ -1,4 +1,4 @@
-#Previewer 0.0.1
+#Previewer 0.0.2
 Updating this text to see if the Develop branch grabs it.
 
 ### Technologies
