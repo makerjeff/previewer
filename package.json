@@ -13,6 +13,7 @@
     "cookie-parser": "latest",
     "mongoose":"latest",
     "bcrypt":"latest",
-    "jwt-simple":"latest"
+    "jwt-simple":"latest",
+    "ipware":"latest"
   }
 }

@@ -25,6 +25,9 @@ var dataHolder = {
     }
 };
 
+//start port
+var port = process.argv[2];
+
 /* ============ INSTANCES ============ */
 var app = express();
 var storage = multer.diskStorage({
@@ -72,6 +75,7 @@ app.get('/', function(request, response){
     response.render('index', dataHolder);
 });
 
+
 /*----------------------- BCRYPT -----------------------*/
 /*----------------------- JADE -----------------------*/
 
@@ -107,6 +111,19 @@ app.get('*', function(request, response){
 });
 
 /* ===== START SERVER ===== */
-app.listen(3000, function(){
-    console.log(dataHolder.app + ' version ' + dataHolder.version + ' running on port ' + process.argv[2] + '.' );
-});
+initServer(port);
+
+
+/* ===== FUNCTIONS ===== */
+
+/**
+ * Initialize the server.
+ * @param port Port number to use. Defaults to 3000 if no port is specified.
+ */
+function initServer(port) {
+    //if no port selected, default to 3000
+    port = port || 3000;
+    app.listen(port, function(){
+        console.log(dataHolder.app + ' version ' + dataHolder.version + ' running on port ' + process.argv[2] + '.' );
+    });
+}

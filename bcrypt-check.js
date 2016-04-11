@@ -12,7 +12,7 @@ var colors = require('colors');
 var hash = '$2a$10$95MgrujRlU3XusHH7bN2s.DhCOqasrKynVTJyT2QUw/aqTqkMGtgu';
 
 
-//test
+//returns TRUE if if password is correct
 var authenticate = bcrypt.compareSync(message, hash);
 
 if(authenticate == true) {

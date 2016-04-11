@@ -7,6 +7,8 @@ Updating this text to see if the Develop branch grabs it.
 - [Multer: File upload](https://www.npmjs.com/package/multer)
 - [bcrypt](https://www.npmjs.com/package/bcryptjs)
 - [JSON Web Token](https://www.npmjs.com/package/jwt-simple)
+- [ipware](https://www.npmjs.com/package/ipware)
+- [Mongoose: Quick Start] (http://mongoosejs.com/docs/) **(NEW)**
 
 
 ### Based on:
@@ -19,6 +21,7 @@ Updating this text to see if the Develop branch grabs it.
 - [Package.JSON](http://browsenpm.org/package.json)
 - [Node External Routes and Middleware](http://stackoverflow.com/questions/14958296/how-to-put-middleware-in-its-own-file-in-node-js-express-js)
 - [Renaming and moving files in Node](https://nodejs.org/docs/latest/api/fs.html#fs_fs_rename_oldpath_newpath_callback) **(NEW)**
+- [Renaming Files Tutorial](https://millermedeiros.github.io/mdoc/examples/node_api/doc/fs.html) **(NEW)**
 
 ### Notes/Major Discoveries
 
