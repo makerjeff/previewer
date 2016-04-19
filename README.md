@@ -9,6 +9,8 @@ Updating this text to see if the Develop branch grabs it.
 - [JSON Web Token](https://www.npmjs.com/package/jwt-simple)
 - [ipware](https://www.npmjs.com/package/ipware)
 - [Mongoose: Quick Start] (http://mongoosejs.com/docs/) **(NEW)**
+- [Node Checksum](- [Node Checksum](https://www.npmjs.com/package/checksum)) **(NEW)**
+
 
 
 ### Based on:

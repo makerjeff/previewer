@@ -5,7 +5,7 @@
   "dependencies": {
     "colors": "latest",
     "express": "^4.13.3",
-    "jade":"latest",
+    "jade":"^1.11.0",
     "multer": "^1.1.0",
     "serve-favicon": "latest",
     "file-type":"latest",
@@ -14,6 +14,7 @@
     "mongoose":"latest",
     "bcrypt":"latest",
     "jwt-simple":"latest",
-    "ipware":"latest"
+    "ipware":"latest",
+    "checksum":"latest"
   }
 }
